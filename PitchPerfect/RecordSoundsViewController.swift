@@ -39,7 +39,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func recordAudio(sender: AnyObject) {
         // Display recording text
-        //recordingLabel.hidden = false
         recordingLabel.text = "Recording in progress" //Task 4 - we change the message here to indicate that the voice is being recorded
         stopButton.hidden = false
         recordButton.enabled = false
@@ -48,10 +47,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         //Inside func recordAudio(sender: UIButton)
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        
-        //let currentDateTime = NSDate()
-        //let formatter = NSDateFormatter()
-        //formatter.dateFormat = "ddMMyyyy-HHmmss"
         
         let recordingName = "my_audio.wav" // formatter.stringFromDate(currentDateTime)+".wav"
         let pathArray = [dirPath, recordingName]
@@ -73,9 +68,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if (flag) {
             //TODO: Step 1 - save the recorded audio
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
-            //Saves the audio - not needed because we are passing everything above
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
         
             //TODO: Step 2 - Move to the next scene / segue
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
