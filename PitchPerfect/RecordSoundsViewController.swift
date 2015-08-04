@@ -39,8 +39,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = false
         recordButton.enabled = false
         
-        //TODO: Record user's voice
-        
         //Inside func recordAudio(sender: UIButton)
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
@@ -62,10 +60,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
-            //TODO: Step 1 - save the recorded audio
+            //save the recorded audio
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
         
-            //TODO: Step 2 - Move to the next scene / segue
+            //Move to the next scene / segue
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
             println("Recording was not successful")
