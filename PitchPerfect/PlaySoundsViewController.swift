@@ -35,21 +35,20 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlowButton(sender: AnyObject) {
-        PlayTheAudio(0.5)
+        playTheAudio(0.5)
     }
 
     @IBAction func playFastButton(sender: AnyObject) {
-        PlayTheAudio(2.0)
+        playTheAudio(2.0)
     }
     
-    func PlayTheAudio(speedOfAudio: Float){
-        audioPlayer.stop()
+    func playTheAudio(speedOfAudio: Float){
+        // Task 2 - Fix overlap bug
+        stopAllAudio(self)
+        
         audioPlayer.rate = speedOfAudio
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
-        // Task 2 - Fix overlap bug
-        audioEngine.stop()
-        audioEngine.reset()
     }
     
     @IBAction func playChipmunkAudio(sender: AnyObject) {
@@ -59,10 +58,9 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func playDarthvaderAudio(sender: AnyObject) {
         playAudioWithVariablePitch(-1000)
     }
+    
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAllAudio(self)
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -83,6 +81,7 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func stopAllAudio(sender: AnyObject) {
         audioPlayer.stop()
         audioEngine.stop()
+        audioEngine.reset()
     }
 
 }

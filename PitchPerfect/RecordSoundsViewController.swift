@@ -20,17 +20,13 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         //Hide stop button
         stopButton.hidden = true
         recordButton.enabled = true
@@ -90,11 +86,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecording(sender: AnyObject) {
-        // Hide recording text
-        // recordingLabel.hidden = true
-        recordingLabel.text = "Let's play" // Task 4 - we can see this momentarily when we click the stop button (may not be necessary)
+        // Task 4 - we can see this momentarily when we click the stop button (may not be necessary)
+        recordingLabel.text = "Let's play"
         
-        //Inside func stopAudio(sender: UIButton)
         //Stops the recording and ends the session
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
