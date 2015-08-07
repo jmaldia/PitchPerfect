@@ -42,7 +42,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         //Inside func recordAudio(sender: UIButton)
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
-        let recordingName = "my_audio.wav" // formatter.stringFromDate(currentDateTime)+".wav"
+        let recordingName = "my_audio.wav" 
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         println(filePath)
